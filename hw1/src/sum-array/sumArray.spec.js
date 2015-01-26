@@ -10,7 +10,7 @@
 
   chai.use(sinonChai);  // adds convenient assertions for sinon
 
-
+  // describe.only() instead of describe() to run only this .spec.js file
   describe('sumArray', function() {
     it('sums an array of integers', function() {
       var ints = [1,2,3,4,5,6,7,8,9,10];
