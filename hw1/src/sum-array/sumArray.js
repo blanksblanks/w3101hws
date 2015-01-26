@@ -5,11 +5,14 @@
     // IMPLEMENT YOUR SOLUTION HERE!
     // MAKE SURE TO USE REDUCE!
     return values.reduce(sum, 0);
+
+    function sum(prev, curr) {
+		return prev + curr;
+	}
+	
   }; 
 
-function sum(prev, curr) {
-	return prev + curr;
-}
+
 
 // [1, 2, 3] prev = 1, curr = 2
 // return 3
