@@ -6,4 +6,4 @@
 * Returned to Columbia for post-bac studies in CS last fall
 * Made an iOS app for helping impulse shoppers called BuyByeBye at MHacks 2015
 * Currently building the iOS version of WikiTalki, an educational app that allows language teachers to easily set up voice recording assignments for their students
-* Interested in mobile, web dev and games :space-invader:
+* Interested in mobile, web dev and games :space_invader:
