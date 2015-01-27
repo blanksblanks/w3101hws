@@ -10,7 +10,7 @@
     // place function inside scope of var sumArray
 
     function sum(prev, curr) {
-      console.log(prev + '+' + curr);
+      // console.log(prev + ' + ' + curr);
       return prev + curr;
     }
 

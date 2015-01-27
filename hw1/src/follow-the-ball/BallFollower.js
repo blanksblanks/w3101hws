@@ -4,7 +4,7 @@
   var BallFollower = function BallFollower(start, swaps) {
     // IMPLEMENT YOUR SOLUTION WITHIN THIS FUNCTION
 
-    console.log('Parameters: ' + start + ', [' + swaps + ']');
+    // console.log('Parameters: ' + start + ', [' + swaps + ']');
 
     var end = start;
     if (Object.prototype.toString.call(swaps) === '[object Array]') {
