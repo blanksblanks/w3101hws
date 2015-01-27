@@ -17,8 +17,8 @@
   gulp.task('lint', function () {
     return gulp.src(['src/**/*.js', 'test/**/*.js'])
                .pipe(jshint())
-               .pipe(jshint.reporter('jshint-stylish'));
-               // .pipe(jscs({configPath: '.jscsrc'}));
+               .pipe(jshint.reporter('jshint-stylish'))
+               .pipe(jscs({configPath: '.jscsrc'}));
                // last line can be commented out to get rid of space/tab req
   });
 
