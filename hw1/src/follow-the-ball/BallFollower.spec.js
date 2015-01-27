@@ -4,7 +4,7 @@
   var BallFollower = require('./BallFollower'),
       expect = require('chai').expect;
 
-  describe('BallFollower', function() {
+  describe.only('BallFollower', function() {
 
     it('returns an object from the constructor function', function() {
       var follower = new BallFollower('firstSwap', 'five');
