@@ -10,21 +10,19 @@
     // place function inside scope of var sumArray
 
     function sum(prev, curr) {
-    	console.log(prev + '+' + curr);
-		  return prev + curr;
-	  }
+      console.log(prev + '+' + curr);
+      return prev + curr;
+    }
 
-  }; 
-
+  };
   // run node src/sum-array/sumArray.js to test console output
   // console.log(sumArray([11, 2, 3]));
-
   // Ex: var sum = [11, 2, 3].reduce( function(total, num){ return total + num }, 0)
-  // HEY WE GOT VALUES: 
+  // HEY WE GOT VALUES:
   // [ 11, 2, 3 ]
-  // 0+11
-  // 11+2
-  // 13+3
+  // 0 + 11
+  // 11 + 2
+  // 13 + 3
   // 16
 
   module.exports = sumArray; // DON'T CHANGE THIS
