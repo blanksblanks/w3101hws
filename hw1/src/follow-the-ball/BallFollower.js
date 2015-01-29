@@ -2,11 +2,13 @@
   'use strict';
 
   var BallFollower = function BallFollower(start, swaps) {
+    // IMPLEMENT YOUR SOLUTION WITHIN THIS FUNCTION
     this.start = start; // this is ONLY instantiated when we create new object
     this.swap = function swap() {
       if (Object.prototype.toString.call(swaps) === '[object Array]') {
         // important note: this.start within the scope of this swap function
         // is not accessible in the BallFollower function so we need to return value
+        // local can access outside values, but outside cannot see local scope
         var position = this.start;
         swaps.forEach(
           function followBall(el) {
@@ -21,9 +23,9 @@
     };
   };
 
+  // Original implementation:
+  //
   // var BallFollower = function BallFollower(start, swaps) {
-  //   // IMPLEMENT YOUR SOLUTION WITHIN THIS FUNCTION
-
   //   // console.log('Parameters: ' + start + ', [' + swaps + ']');
 
   //   var end = start;
@@ -51,16 +53,9 @@
   //     start : end
   //   };
 
-  //   // follower = new BallFollower('args');
-
-  //   // function BallFollower('args') {
-  //   //   this.start = args;
-  //   //   this.swap  = function() {};
-  //   // }
-
   // };
 
-  // test: // need the new when you return a function with property
+  // test: // need the new when you return a function with this property
   // console.log(new BallFollower(2, [[0, 2], [1, 0]]));
 
   module.exports = BallFollower; // DON'T ALTER THIS
