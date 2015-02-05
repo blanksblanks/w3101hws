@@ -5,7 +5,7 @@
 
   var Event = function Event() {
     this.observerList = [];
-  }
+  };
 
 
   Event.prototype.subscribe = function(obj) {
@@ -34,8 +34,8 @@
   var event = new Event();
   var someFunction = function (a, b) { return a + b; };
 
-  console.log("Event prototype: " + Object.prototype.toString.call(Event));
-  console.log("typeof Event: " + typeof Event);
+  console.log('Event prototype: ' + Object.prototype.toString.call(Event));
+  console.log('typeof Event: ' + typeof Event);
 
   event.subscribe(someFunction);
   event.emit(1, 2); // someFunction will be called with these args
