@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+// look in ./Event
   var Event = require('./Event'),
       expect = require('chai').expect;
 
@@ -11,7 +12,7 @@
     };
   }
 
-  describe('Simple Event test cases', function() {
+  describeonly('Simple Event test cases', function() {
     it ('an Event constructor function should be defined', function () {
       expect(typeof Event).to.equal('function');
     });
