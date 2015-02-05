@@ -12,7 +12,7 @@
     };
   }
 
-  describeonly('Simple Event test cases', function() {
+  describe.only('Simple Event test cases', function() {
     it ('an Event constructor function should be defined', function () {
       expect(typeof Event).to.equal('function');
     });
