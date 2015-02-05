@@ -9,10 +9,12 @@
 
 
   Event.prototype.subscribe = function(obj) {
+    console.log(obj + ' subscribed!');
     return this.observerList.push(obj);
   };
 
   Event.prototype.unsubscribe = function(obj) {
+    console.log(obj + ' unsubscribed');
     for (var i = 0; i < this.observerList.length; i++) {
       if (this.observerList[i] === obj) {
         this.observerList.splice(i, 1);
@@ -21,10 +23,10 @@
   };
 
   Event.prototype.emit = function(obj) {
-    console.log('This should emit');
+    console.log(arguments + ' should emit');
     for (var i = 0; i < this.observerList.length; i++) {
       this.observerList[i].apply(this, arguments);
-      console.log(this.observerList[i].apply(this, arguments));
+      console.log('Result : ' + this.observerList[i].apply(this, arguments));
     }
   };
 
