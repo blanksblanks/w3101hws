@@ -36,8 +36,8 @@
   event.emit(1, 2); // someFunction will be called with these args
   event.unsubscribe(someFunction); // some function no longer subscribed
 
-  console.log(Object.prototype.toString.call(Event));
-  console.log(typeof Event);
+  console.log("Event prototype: " + Object.prototype.toString.call(Event));
+  console.log("typeof Event: " + typeof Event);
 
   module.exports = Event;
 
