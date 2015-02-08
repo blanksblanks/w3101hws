@@ -26,7 +26,7 @@
     // console.log(arguments + ' should emit');
     for (var i = 0; i < this.observerList.length; i++) {
       this.observerList[i].apply(this, arguments);
-      console.log('Result : ' + this.observerList[i].apply(this, arguments));
+      // console.log('Result : ' + this.observerList[i].apply(this, arguments));
     }
   };
 
