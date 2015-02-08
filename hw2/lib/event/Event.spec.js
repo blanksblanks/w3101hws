@@ -36,6 +36,7 @@
       e.emit(1, 2, 3, 'first', undefined, false);
 
       expect(f1.calls).to.equal(1); // 'first handler calls'
+      console.log('f1 calls', f1.calls);
       expect(f2.calls).to.equal(1); // 'second handler calls'
       expect(f1.args).to.eql([1, 2, 3, 'first', undefined, false]); // 'first handler arguments'
       expect(f2.args).to.eql([1, 2, 3, 'first', undefined, false]); // 'second handler arguments'
