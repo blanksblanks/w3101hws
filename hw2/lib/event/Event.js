@@ -9,12 +9,12 @@
 
 
   Event.prototype.subscribe = function(obj) {
-    console.log(obj + ' subscribed!');
+    // console.log(obj + ' subscribed!');
     this.observerList.push(obj);
   };
 
   Event.prototype.unsubscribe = function(obj) {
-    console.log(obj + ' unsubscribed');
+    // console.log(obj + ' unsubscribed');
     for (var i = 0; i < this.observerList.length; i++) {
       if (this.observerList[i] === obj) {
         this.observerList.splice(i, 1);
