@@ -4,7 +4,13 @@
   function cache(fx) {
     var cached = {};
     return function() {
-      var key = JSON.stringify(arguments);
+      var key;
+      if (arguments === undefined) {
+        key = JSON.stringify('undefined');
+      } else {
+        key = JSON.stringify(arguments);
+      }
+
       if (cached[key] !== undefined) {
         return cached[key];
       } else {
