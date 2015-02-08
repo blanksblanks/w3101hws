@@ -9,7 +9,7 @@
     expect(typeof cache).to.equal('function');
   });
 
-  describe('functionality tests', function() {
+  describe.only('functionality tests', function() {
     var complexFunctionCalls = 0;
     var complexFunction = function(arg1) {
       complexFunctionCalls++;
