@@ -4,15 +4,27 @@
   function cache(fx) {
     var cached = {};
     return function() {
-      if (cached[JSON.stringify(arguments)] !== undefined) {
-        return cached[JSON.stringify(arguments)];
+      var key = JSON.stringify(arguments);
+      if (cached[key] !== undefined) {
+        return cached[key];
       } else {
         var result = fx.apply(this, arguments);
-        cache[JSON.stringify(arguments)] = result;
+        cached[key] = result;
         return result;
       }
     };
   }
+
+  // test
+  var someComplexFunction = function(arg1, arg2) {
+    return arg1 + arg2;
+  };
+
+  var cachedFunction = cache(someComplexFunction);
+
+  console.log(cachedFunction('a', 'b'));
+  console.log(cachedFunction('a', 'b'));
+  console.log(cachedFunction('a', 'c'));
 
   module.exports = cache;
 
