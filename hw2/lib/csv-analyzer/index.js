@@ -12,16 +12,16 @@
   var CsvAnalyzer = function(dir, options, fx) {
      new FileFinder(dir, 'csv', function(err, data) {
       if (err) {
-        console.error('Error!', err);
+        // console.error('Error!', err);
         return fx (err, null);
       }
       var csvfile = data;
-      console.log(csvfile);
+      // console.log(csvfile);
       var csv = new CsvParser(csvfile);
       var result = csv.compute(options.cells, options.func);
-      console.log(csv);
-      console.log(options);
-      console.log('result! ' + result);
+      // console.log(csv);
+      // console.log(options);
+      // console.log('result! ' + result);
       fx(null, result);
     });
    };
