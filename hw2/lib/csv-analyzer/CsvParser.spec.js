@@ -11,7 +11,7 @@
   var csv4 = '1\n2\n3\n4\n5';
   var csv5 = '1\n2\n3\n4\n5';
   var csv6 = '1,2,3,4,5,6,7,8,9';
-  describe.only('CsvParser', function() {
+  describe('CsvParser', function() {
 
     describe('Given csv as input', function() {
       it('should map the csv file into a 2D array', function() {
