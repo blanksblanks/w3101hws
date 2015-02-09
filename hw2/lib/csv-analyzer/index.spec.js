@@ -4,7 +4,7 @@
   var CsvAnalyzer = require('../csv-analyzer/'),
       expect      = require('chai').expect;
 
-  describe('CsvAnalyzer', function() {
+  describe.only('CsvAnalyzer', function() {
 
     var dir = process.cwd() + '/lib/csv-analyzer/',
         a = {row: 1, col: 1},
