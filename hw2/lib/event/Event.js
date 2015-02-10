@@ -32,9 +32,7 @@
 
   module.exports = Event;
 
-})();
-
-  // Test cases:
+  // Testing
   // var event = new Event();
   // var someFunction = function (a, b) { return a + b; };
 
@@ -44,3 +42,6 @@
   // event.subscribe(someFunction);
   // event.emit(1, 2); // someFunction will be called with these args
   // event.unsubscribe(someFunction); // some function no longer subscribed
+
+})();
+
