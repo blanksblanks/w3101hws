@@ -23,15 +23,4 @@
 
   module.exports = cache;
 
-  // Testing
-  // var someComplexFunction = function(arg1, arg2) {
-  //   return arg1 + arg2;
-  // };
-
-  // var cachedFunction = cache(someComplexFunction);
-
-  // console.log(cachedFunction('a', 'b'));
-  // console.log(cachedFunction('a', 'b'));
-  // console.log(cachedFunction('a', 'c'));
-
 })();
