@@ -22,7 +22,6 @@
 
     function returnFileText(file) {
       var fileToRead = pathToDirectory + file;
-
       fs.readFile(fileToRead, function(err, data) {
         if (err) {
           callbackError(err);
@@ -37,18 +36,6 @@
     }
 
   };
-
-
-  // FileFinder('./', 'txt', function (err, data));
-  // FileFinder(process.cwd() + '/', 'csv', function(err, data) {
-    // if (err) {
-    //   console.error('llll', err);
-    //   // return done();
-    // }
-    // var csvfile = data;
-    // console.log(csvfile);
-  //   // done();
-  // });
 
   module.exports = FileFinder;
 
