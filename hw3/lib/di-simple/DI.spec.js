@@ -4,7 +4,7 @@
   var DI = require('./DI'),
       expect = require('chai').expect;
 
-  describe('Inject dependencies', function() {
+  describe.only('Inject dependencies', function() {
     function MainCtrl () { return 'MainCtrl called'; }
     function User () { return 'User Service invoked'; }
     function Auth () { return 'Auth service'; }
@@ -24,6 +24,7 @@
       var injectedFunc = app.inject(function (Auth, User, MainCtrl, sum) {
         return [Auth(), User(), MainCtrl(), sum(1, 2)].join(', ');
       });
+      console.log('injec', injectedFunc)
       expect(injectedFunc()).to.equal(
         'Auth service, User Service invoked, MainCtrl called, 3'
       );
