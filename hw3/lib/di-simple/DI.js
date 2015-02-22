@@ -16,11 +16,16 @@
     var matches = funcString.match(/^function\s+?.*?\((.*?)\)/);
     var params = funcString.match(/\sa-Z(\d)$/g);
     var argsNames = matches[1].split(',').map(function (arg) { return arg.trim(); });
+    var argsParams = funcString.match(/(\[.*\])/)[0].replace(/\[\]/g, '')
+      .split('), ').map(function(el) {
+        return el.match(/\d/g);
+      });
     var dependencies = this.dependencies;
 
     console.log('fs', funcString);
     console.log('ms', matches);
     console.log('aN', argsNames);
+    console.log('aP', argsParams);
     console.log('ds', dependencies);
     return function () {
       var args = argsNames.reduce(function (args, argName) {
