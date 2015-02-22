@@ -18,10 +18,10 @@
     var dependencies = this.dependencies;
     var self = this;
 
-    console.log('fs', funcString);
-    console.log('ms', matches);
-    console.log('aN', argsNames);
-    console.log('ds', dependencies);
+    // console.log('fs', funcString);
+    // console.log('ms', matches);
+    // console.log('aN', argsNames);
+    // console.log('ds', dependencies);
 
     return function () {
       var cachedFuncs = [];

@@ -24,7 +24,6 @@
       var injectedFunc = app.inject(function (Auth, User, MainCtrl, sum) {
         return [Auth(), User(), MainCtrl(), sum(1, 2)].join(', ');
       });
-      console.log('injec', injectedFunc)
       expect(injectedFunc()).to.equal(
         'Auth service, User Service invoked, MainCtrl called, 3'
       );
