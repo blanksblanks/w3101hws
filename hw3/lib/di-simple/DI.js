@@ -24,11 +24,11 @@
     console.log('ds', dependencies);
 
     return function () {
-	  var cachedFuncs = [];
+      var cachedFuncs = [];
 
-	  argsNames.map(function(el) {
-	  	if (el) {
-        	cachedFuncs.push(self.registeredFuncs[el]);
+      argsNames.map(function(el) {
+        if (el) {
+          cachedFuncs.push(self.registeredFuncs[el]);
         }
       });
 
