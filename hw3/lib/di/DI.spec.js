@@ -23,7 +23,7 @@
 
       it('should load multiple modules', function() {
         var moduleA = DI.module('moduleA', []),
-            moduleB = DI.module('moduleB', []);
+          moduleB = DI.module('moduleB', []);
 
         function aFunc() { return 'Hello from A'; }
         function bFunc() { return 'Hello from B'; }
@@ -70,31 +70,31 @@
       it('loads the required modules of a module\'s required modules',
          function() {
 
-        var moduleA = DI.module('moduleA', []),
-            moduleB = DI.module('moduleB', ['moduleA']),
-            moduleC = DI.module('moduleC', ['moduleB']);
+           var moduleA = DI.module('moduleA', []),
+          moduleB = DI.module('moduleB', ['moduleA']),
+          moduleC = DI.module('moduleC', ['moduleB']);
 
-        function aFunc() { return 'Hello from A'; }
-        function bFunc() { return 'Hello from B'; }
-        function cFunc() { return 'Hello from C'; }
-        moduleA.register('aFunc', aFunc);
-        moduleB.register('bFunc', bFunc);
-        moduleC.register('cFunc', cFunc);
+           function aFunc() { return 'Hello from A'; }
+           function bFunc() { return 'Hello from B'; }
+           function cFunc() { return 'Hello from C'; }
+           moduleA.register('aFunc', aFunc);
+           moduleB.register('bFunc', bFunc);
+           moduleC.register('cFunc', cFunc);
 
-        var injectedIntoA = moduleA.inject(function (aFunc) {
-          return aFunc();
-        });
-        var injectedIntoB = moduleB.inject(function (bFunc) {
-          return bFunc();
-        });
-        var injectedIntoBFromA = moduleB.inject(function (aFunc) {
-          return aFunc();
-        });
-        var injectedIntoCFromA = moduleC.inject(function (aFunc) {
-          return aFunc();
-        });
-        expect(injectedIntoCFromA()).to.equal('Hello from A');
-      });
+           var injectedIntoA = moduleA.inject(function (aFunc) {
+             return aFunc();
+           });
+           var injectedIntoB = moduleB.inject(function (bFunc) {
+             return bFunc();
+           });
+           var injectedIntoBFromA = moduleB.inject(function (aFunc) {
+             return aFunc();
+           });
+           var injectedIntoCFromA = moduleC.inject(function (aFunc) {
+             return aFunc();
+           });
+           expect(injectedIntoCFromA()).to.equal('Hello from A');
+         });
 
       // does not allow circular registration of dependencies
       it('loads each module only once', function() {
