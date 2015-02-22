@@ -14,28 +14,45 @@
   DI.prototype.inject = function(func) {
     var funcString = func.toString();
     var matches = funcString.match(/^function\s+?.*?\((.*?)\)/);
-    var params = funcString.match(/\sa-Z(\d)$/g);
+    // var params = funcString.match(/(\[.*\])/)[0].replace(/\[\]/g, '')
+    //   .split('), ').map(function(el) {
+    //     console.log('el', el.match(/\d/g));
+    //     return el.match(/\d/g);
+    //   });
     var argsNames = matches[1].split(',').map(function (arg) { return arg.trim(); });
-    var argsParams = funcString.match(/(\[.*\])/)[0].replace(/\[\]/g, '')
-      .split('), ').map(function(el) {
-        return el.match(/\d/g);
-      });
     var dependencies = this.dependencies;
 
     console.log('fs', funcString);
     console.log('ms', matches);
     console.log('aN', argsNames);
-    console.log('aP', argsParams);
     console.log('ds', dependencies);
-    return function () {
-      var args = argsNames.reduce(function (args, argName) {
-        argName && args.push(dependencies[argName]);
-        return args;
-      }, []);
 
-      console.log('FUNC', func);
-      console.log('args', args);
-      return func.apply(this, args);
+	var self = this;
+	var func = func;
+
+    return function () {
+
+	  console.log('return argnames', argsNames);
+	  var cachedFuncs = [];
+
+	  argsNames.map(function(el, idx) {
+	  	console.log('registry', self.registeredFuncs);
+        cachedFuncs.push(self.registeredFuncs[el]);
+      })
+	  console.log('func()', func.apply(this, cachedFuncs));
+      // var args = argsNames.map(function (el, idx) {
+      // 	console.log('mapEl', el);
+      // 	if (this.registeredFuncs[el]){
+      // 		this.registeredFuncs[el].apply(this, params[idx]);
+      // 	}
+      // 	return
+      //   // argName && args.push(dependencies[argName]);
+      //   // return args;
+      // }, []);
+
+      // console.log('FUNC', func);
+      // console.log('args', args);
+      return func.apply(this, cachedFuncs); ///.apply(this, args);
     };
     // var definition = ' ' + func.prototype.constructor;
     // var funcs;
