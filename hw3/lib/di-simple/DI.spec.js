@@ -4,7 +4,7 @@
   var DI = require('./DI'),
       expect = require('chai').expect;
 
-  describe.only('Inject dependencies', function() {
+  describe('Inject dependencies', function() {
     function MainCtrl () { return 'MainCtrl called'; }
     function User () { return 'User Service invoked'; }
     function Auth () { return 'Auth service'; }
