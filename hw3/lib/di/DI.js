@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-  // var that = this;
 
   var ModuleCreator = function(name, dependencies) {
     var self = this;
@@ -16,7 +15,6 @@
 
     function register(name, func) {
       self.registeredFuncs[name] = func;
-      // console.log("ds regfunc", dependencies.registeredFuncs);
     }
 
     function inject(func) {
@@ -24,9 +22,10 @@
       var matches = funcString.match(/^function\s+?.*?\((.*?)\)/);
       var argsNames = matches[1].split(',').map(function (arg) { return arg.trim(); });
 
+      // if the module has any dependencies, register their functions
       if (dependencies) {
         var depFuncs = dependencies.getRegisteredFunc();
-        console.log('\n\ndep funcs', depFuncs);
+        // console.log('\n\ndep funcs', depFuncs);
         for (var key in depFuncs) {
           if (depFuncs.hasOwnProperty(key)) {
             register(key, depFuncs[key]);
@@ -38,11 +37,6 @@
       // console.log('ms', matches);
       // console.log('aN', argsNames);
       // console.log('func', func);
-      //*console.log('\n\nlogging from within DI object...');
-      //*console.log('\ndependencies', dependencies);
-
-      // console.log('DI Modules', that);
-      // console.log('self.modules', self.modules);
 
       return function () {
         var cachedFuncs = [];
@@ -67,15 +61,11 @@
   module.exports = {
     modules: {},
     module: function (name, dependencies) {
-      //*console.log('module function in exports getting called for arguments', arguments);
-      // console.log('this modules', this.modules);
       var ds = this.modules[dependencies];
-      //*console.log('\n\nthis dependencies', ds);
-      // console.log('this.module[' + dependencies + ']', this.module[dependencies]);
-      // console.log('creating new DI object...', name, dependencies);
+      // console.log('\n\nthis modules', this.modules);
+      // console.log('\n\nthis dependencies', ds);
       var mod = new ModuleCreator(name, ds);
       this.modules[name] = mod;
-      //*console.log('this.modules[' + name + ']=', this.modules[name]);
       return mod;
     }
   };
