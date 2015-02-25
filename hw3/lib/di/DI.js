@@ -61,22 +61,17 @@
     modules: {},
     module: function (name, dependencies) {
       console.log('module function in exports getting called for arguments', arguments);
-      if (arguments.length === 1) {
-        var mod = this.modules[name];
-        // throw 'DI', name, 'is not available';
-      } else {
-        // console.log('it always goes here to the else');
-        // console.log('this modules', this.modules);
-        var ds = this.modules[dependencies];
-        console.log('this dependencies', ds);
-        console.log('\n');
-        // console.log('this.module[' + dependencies + ']', this.module[dependencies]);
-        // console.log('creating new DI object...', name, dependencies);
-        var mod = new ModuleCreator(name, ds);
-        this.modules[name] = mod;
-        console.log('this.modules[' + name + ']=', this.modules[name]);
-        return mod;
-      }
+      // console.log('it always goes here to the else');
+      // console.log('this modules', this.modules);
+      var ds = this.modules[dependencies];
+      console.log('this dependencies', ds);
+      console.log('\n');
+      // console.log('this.module[' + dependencies + ']', this.module[dependencies]);
+      // console.log('creating new DI object...', name, dependencies);
+      var mod = new ModuleCreator(name, ds);
+      this.modules[name] = mod;
+      console.log('this.modules[' + name + ']=', this.modules[name]);
+      return mod;
     }
   };
 
