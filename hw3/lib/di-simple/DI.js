@@ -39,17 +39,8 @@
   module.exports = {
     modules: {},
     module: function (name, dependencies) {
-      if (arguments.length === 1) {
-        for (var i = 0; i < this.modules.length; i++) {
-          if (this.modules[i].name === name) {
-            return this.module[i];
-          }
-        }
-        // throw 'DI', name, 'is not available';
-      } else {
-        var module = new DI(name, dependencies);
-        return module;
-      }
+      var module = new DI(name, dependencies);
+      return module;
     }
   };
 })();
