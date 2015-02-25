@@ -1,22 +1,17 @@
 (function () {
   'use strict';
 
+  // dependency injection function constructor
   var ModuleCreator = function(name, dependencies) {
     var self = this;
     self.registeredFuncs = {};
 
-    self.module = {
-      name: name,
-      dependencies: dependencies,
-      register: register,
-      inject: inject,
-      getRegisteredFunc: getRegisteredFunc
-    };
-
+    // register functions with a given module
     function register(name, func) {
       self.registeredFuncs[name] = func;
     }
 
+    // inject registered functions into other functions
     function inject(func) {
       var funcString = func.toString();
       var matches = funcString.match(/^function\s+?.*?\((.*?)\)/);
@@ -25,18 +20,12 @@
       // if the module has any dependencies, register their functions
       if (dependencies) {
         var depFuncs = dependencies.getRegisteredFunc();
-        // console.log('\n\ndep funcs', depFuncs);
         for (var key in depFuncs) {
           if (depFuncs.hasOwnProperty(key)) {
             register(key, depFuncs[key]);
           }
         }
       }
-
-      // console.log('fs', funcString);
-      // console.log('ms', matches);
-      // console.log('aN', argsNames);
-      // console.log('func', func);
 
       return function () {
         var cachedFuncs = [];
@@ -47,24 +36,32 @@
           }
         });
 
-        return func.apply(this, cachedFuncs); ///.apply(this, args);
+        return func.apply(this, cachedFuncs);
       };
     }
 
-    function getRegisteredFunc(func) {
+    // get registered functions from a given module
+    function getRegisteredFunc() {
       return self.registeredFuncs;
     }
 
+    // use revealing module pattern to return module object
+    self.module = {
+      name: name,
+      dependencies: dependencies,
+      register: register,
+      inject: inject,
+      getRegisteredFunc: getRegisteredFunc
+    };
+
     return self.module;
-  }; // wrapping non-IIFE function literals in parens is unnecessary?
+  };
 
   module.exports = {
     modules: {},
     module: function (name, dependencies) {
-      var ds = this.modules[dependencies];
-      // console.log('\n\nthis modules', this.modules);
-      // console.log('\n\nthis dependencies', ds);
-      var mod = new ModuleCreator(name, ds);
+      var ds = this.modules[dependencies]; // load dependencies as modules
+      var mod = new ModuleCreator(name, ds); // create new modules
       this.modules[name] = mod;
       return mod;
     }
